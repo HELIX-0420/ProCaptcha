@@ -1,0 +1,51 @@
+############################################################
+# ProCaptcha made by Chelsea1124/HELIX
+#
+# Follow My Twitter :D.
+# https://twitter.com/HELIX______
+#
+# Sub to my YouTube channel for fun and amazing content!.
+# https://www.youtube.com/chelsea1124HD
+#
+# Join my discord to speak with others and me when im coding!.
+# https://discord.gg/dZtEBAJ
+#
+###########################################################
+
+Messages:
+  #This is the message that will display when the player clicks the wrong item.
+  kickmessage: "&cTold you not to click me :/"
+  #This is the Title of the item they are suppose to click to complete the captcha.
+  RightTitle: "&aCLICK ME!"
+  #This is the Title of the item they are not suppose to click.
+  WrongTitle: "&2&kIiI&a&kIiI&4&kIiI&c&kIiI&6&kIiI&e&kIiI&3&kIiI&b&kIiI&5&kIiI&d&kIiI&1&9&kIiI&1&kIiI&8&kIiI&7&kIiI"
+
+GUIItems:
+  #This is the title of the Captcha GUI.
+  Title: "&aComplete the Captcha"
+  #This is where you change the the Wrong item (The item they are not suppose to click).
+  WrongItem: 39
+  #This is where you change the the Right item (The item they are suppose to click to complete the captcha).
+  RightItem: 40
+  #This is where you can make the Right(The item they are suppose to click to complete the captcha)Item Enchanted or not.
+  RightItemGlow: true
+  #This is where you can make the Wrong(The item they are not suppose to click)Item Enchanted or not.
+  WrongItemGlow: false
+  #This will put random items from Minecraft in to the GUi instead of a set item. PS make sure setitem is turned to False
+  randomitem: true
+  #This will set the wrong item to a set item you setup. PS make sure randomitem is set to False.
+  setitem: false
+
+Timer:
+  #This is the kick timer so if the player dose not complete the captcha in x amount of time they get kicked (Default is 10s 160).
+  #The timer is done by Minecraft ticks so 20 ticks = 1 second so as you can see 160 ticks = 10 seconds.
+  KickTime: 160
+  #This is where you can turn off and on the kick timer so if they don't complete the captcha in 10s they get kicked.
+  KickTimer: true
+  #This is where change the message that will display on the players screen when kicked if they don't complete the captcha.
+  KickMessage: "&c You did not complete the captcha in time :/"
+
+#This will stop the players from chatting when in captcha.
+Chatting: true
+#This will stop people from doing commands in chat.
+Commands: true
