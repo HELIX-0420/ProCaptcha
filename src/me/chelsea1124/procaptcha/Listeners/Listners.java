@@ -1,6 +1,6 @@
 package me.chelsea1124.procaptcha.Listeners;
 
-import me.chelsea1124.procaptcha.GUIS.captchaGUI;
+import me.chelsea1124.procaptcha.GUI.CaptchaGUI;
 import me.chelsea1124.procaptcha.Main;
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -16,13 +16,22 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.Inventory;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Listners implements Listener {
+
 
     private Main main;
     public Listners (Main main)
     {
         this.main = main;
     }
+
+    java.util.Date Time = new Date();
+    SimpleDateFormat format1 = new SimpleDateFormat("HH:mm:ss");
+    Date Date = new Date();
+    SimpleDateFormat format2 = new SimpleDateFormat("dd-MM-yyyy");
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
@@ -31,7 +40,7 @@ public class Listners implements Listener {
         Location loc = p.getLocation();
         int x = loc.getBlockX();
         int z = loc.getBlockZ();
-        captchaGUI gui = new captchaGUI();
+        CaptchaGUI gui = new CaptchaGUI();
         gui.build(p);
 
         if (p.hasPermission("procaptcha.bypass") || p.isOp()) {
@@ -90,7 +99,6 @@ public class Listners implements Listener {
         Main.instance.inventories.remove(p);
     }
 
-
     @EventHandler
     public void onInvClick(InventoryClickEvent e) {
 
@@ -105,18 +113,20 @@ public class Listners implements Listener {
                     return;
                 }
 
-                if (e.getCurrentItem().getType() == (Material.getMaterial(String.valueOf(Main.instance.getConfig().getInt("GUIItems.RightItem"))))) {
+                if (e.getCurrentItem().getType() == Material.matchMaterial(main.getConfig().getString("GUIItems.RightItem"))) {
 
                     if(p.isFlying() == true){
                         p.setFlying(false);
                     }
 
                     Main.instance.inventories.remove(p);
-                    p.playEffect(p.getLocation(), Effect.EXTINGUISH, 20);
+                    p.playSound(p.getLocation(), Sound.valueOf(main.getConfig().getString("Sounds.WhenPlayerCompletesCaptcha")), main.getConfig().getInt("AllSoundVolumes.Volume"), main.getConfig().getInt("AllSoundVolumes.Pitch"));
+                    Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), Main.instance.color(main.getConfig().getString("GUIItems.RightCommand").replace("%player%", p.getPlayer().getDisplayName())));
+                    p.sendMessage(Main.instance.color(main.getConfig().getString("Messages.CompleteCaptchaMessage").replace("%time%", format1.format(Time)).replace("%date%", format2.format(Date)).replace("%player%", p.getDisplayName())));
                     p.closeInventory();
                 }
 
-                if (e.getCurrentItem().getType() == (Material.getMaterial(String.valueOf(Main.instance.getConfig().getInt("GUIItems.WrongItem"))))) {
+                if (e.getCurrentItem().getType() == Material.matchMaterial(main.getConfig().getString("GUIItems.WrongItem"))) {
 
                     if(p.isFlying() == true){
                         p.setFlying(false);
@@ -156,7 +166,7 @@ public class Listners implements Listener {
         Location loc = e.getFrom();
         if ((Main.instance.inventories.containsKey(p) && (
 
-            (e.getTo().getY() != loc.getY()) || (e.getTo().getX() != loc.getX()) || (e.getTo().getZ() != loc.getZ())))) {
+                (e.getTo().getY() != loc.getY()) || (e.getTo().getX() != loc.getX()) || (e.getTo().getZ() != loc.getZ())))) {
             loc.setPitch(e.getTo().getPitch());
             loc.setYaw(e.getTo().getYaw());
             p.teleport(loc);

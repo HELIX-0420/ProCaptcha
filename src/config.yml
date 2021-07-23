@@ -2,13 +2,13 @@
 # ProCaptcha made by Chelsea1124/HELIX
 #
 # Follow My Twitter :D.
-# https://twitter.com/HELIX______
+# https://twitter.com/HELIX__TV
 #
-# Sub to my YouTube channel for fun and amazing content!.
-# https://www.youtube.com/chelsea1124HD
+# Check out my GitHub for Public Projects i do.
+# https://github.com/HELIX-0420
 #
-# Join my discord to speak with others and me when im coding!.
-# https://discord.gg/dZtEBAJ
+# Need Help with the Plugin or just need help with code Join the Discord.
+# https://discord.com/invite/uUJtHUhCAY
 #
 ###########################################################
 
@@ -19,22 +19,45 @@ Messages:
   RightTitle: "&aCLICK ME!"
   #This is the Title of the item they are not suppose to click.
   WrongTitle: "&2&kIiI&a&kIiI&4&kIiI&c&kIiI&6&kIiI&e&kIiI&3&kIiI&b&kIiI&5&kIiI&d&kIiI&1&9&kIiI&1&kIiI&8&kIiI&7&kIiI"
+  #This Message will get sent to the player/user once they have completed the Captcha.
+  CompleteCaptchaMessage: "&aWell done you completed the Captcha."
 
 GUIItems:
   #This is the title of the Captcha GUI.
   Title: "&aComplete the Captcha"
   #This is where you change the the Wrong item (The item they are not suppose to click).
-  WrongItem: 39
+  WrongItem: "BROWN_MUSHROOM"
   #This is where you change the the Right item (The item they are suppose to click to complete the captcha).
-  RightItem: 40
+  RightItem: "RED_MUSHROOM"
+  #This will run a command when a player gets the Captcha right. (Could use it to give them the perm to bypass captcha for example).
+  #If you don't want a command to run just leave it blank. use the %player% variable to get the players name.
+  RightCommand: ""
   #This is where you can make the Right(The item they are suppose to click to complete the captcha)Item Enchanted or not.
   RightItemGlow: true
   #This is where you can make the Wrong(The item they are not suppose to click)Item Enchanted or not.
   WrongItemGlow: false
-  #This will put random items from Minecraft in to the GUi instead of a set item. PS make sure setitem is turned to False
-  randomitem: true
-  #This will set the wrong item to a set item you setup. PS make sure randomitem is set to False.
-  setitem: false
+
+GUIsPlayerHead:
+  #List of variable you can use in the head Title and Lore below this this VV.
+  # | %player% | %date% | %time%"
+  #This is where you can set the title of the players head in the GUI.
+  Title: "&eWelcome &c&l%player%"
+  #This is where you can set the lore of the players head in the GUI
+  Lore:
+    - "&aDate > %date%"
+    - "&dTime > %time%"
+    - "&ePlayer > %player%"
+
+Sounds:
+  #This sound will play when the Player/User Completes the Captcha
+  # Go to (https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html) for all available Sounds.
+  WhenPlayerCompletesCaptcha: "AMBIENT_CAVE"
+
+AllSoundVolumes:
+  #This will change the Volume of all the Sounds in the "Sounds" category above.
+  Volume: 100
+  #This will change the Pitch of all the Sounds in the "Sounds" category above.
+  Pitch: 50
 
 Timer:
   #This is the kick timer so if the player dose not complete the captcha in x amount of time they get kicked (Default is 10s 160).

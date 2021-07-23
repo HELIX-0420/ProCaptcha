@@ -11,7 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.util.HashMap;
 
-public class Main extends JavaPlugin implements Listener {
+public class Main  extends JavaPlugin implements Listener {
 
     public static Main instance;
     public HashMap<Player, Inventory> inventories = new HashMap<Player, Inventory>();
