@@ -6,15 +6,17 @@ ago to stop people from botting there server and mass spamming accounts on to th
 
 So what does it do? 
 --
-Well ProCaptcha Will make people who join the server that is not Oped or have the permisson to bypass it
-complete a Captcha (Something like Google Bot thing just in Minecraft).
+Well ProCaptcha Will make people who join the server that is not Oped or have 
+the permisson to bypass itcomplete a Captcha (Something like Google Bot thing just in Minecraft).
 
 So how does it work?
 --
-Well the way ProCaptcha works if the player joins (If not Bypassed of course) it will force open a GUI
-they can not close in till clicking the item that is Radnomly placed in the GUI. If they click the wrong
-item they will be forced off the server (Kicked) because they will be classed as a bot trying to get on the
-server and then ofcourse if they click the right item they will be able to walk around and play the server freelay
+Well the way ProCaptcha works if the player joins (If not Bypassed of course) 
+it will force open a GUI they can not close in till clicking the item that is 
+Radnomly placed in the GUI. If they click the wrong item they will be forced 
+off the server (Kicked) because they will be classed as a bot trying to get on the
+server and then ofcourse if they click the right item they will be able to walk 
+around and play the server freelay.
 
 What is all the features ProCaptcha Offers??
 --
