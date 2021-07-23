@@ -1,4 +1,5 @@
 <h1 align="center">🎓 Best Captcha Plugin for your Minecraft Server 🎓</h1>
+
 ```
 ProCaptcha is a plugin that i made for a Minecraft server i use to work on a few years
 ago to stop people from botting there server and mass spamming accounts on to there server(s)/hubs.
