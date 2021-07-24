@@ -48,6 +48,10 @@ GUIsPlayerHead:
     - "&dTime > %time%"
     - "&ePlayer > %player%"
 
+JoinCounter:
+  #If this is turned on this will be the amount of joins it takes before they don't need to do the Captcha again
+  Amount: 1
+
 Sounds:
   #This sound will play when the Player/User Completes the Captcha
   # Go to (https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html) for all available Sounds.
