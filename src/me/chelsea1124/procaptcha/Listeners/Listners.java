@@ -40,10 +40,11 @@ public class Listners implements Listener {
         Location loc = p.getLocation();
         int x = loc.getBlockX();
         int z = loc.getBlockZ();
+        double y = p.getWorld().getHighestBlockAt(p.getLocation()).getY() + 1;
         CaptchaGUI gui = new CaptchaGUI();
         gui.build(p);
 
-        if (p.hasPermission("procaptcha.bypass") || p.isOp()) {
+        if (p.hasPermission("procaptcha.bypass") || p.isOp() || main.data.getConfig().getInt(p.getDisplayName() + ".joins") == main.getConfig().getInt("JoinCounter.Amount")){
 
             Bukkit.getScheduler().scheduleSyncDelayedTask(Main.instance, new Runnable() {
                 public void run() {
@@ -53,6 +54,11 @@ public class Listners implements Listener {
                 }
             }, 1L);
             return;
+        }
+
+        if(!p.isOnGround()){
+            Location loc2 = p.getLocation().add(loc.getX(), y, loc.getZ());
+            p.teleport(loc2);
         }
 
         if (p.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.AIR) {
@@ -123,6 +129,18 @@ public class Listners implements Listener {
                     p.playSound(p.getLocation(), Sound.valueOf(main.getConfig().getString("Sounds.WhenPlayerCompletesCaptcha")), main.getConfig().getInt("AllSoundVolumes.Volume"), main.getConfig().getInt("AllSoundVolumes.Pitch"));
                     Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), Main.instance.color(main.getConfig().getString("GUIItems.RightCommand").replace("%player%", p.getPlayer().getDisplayName())));
                     p.sendMessage(Main.instance.color(main.getConfig().getString("Messages.CompleteCaptchaMessage").replace("%time%", format1.format(Time)).replace("%date%", format2.format(Date)).replace("%player%", p.getDisplayName())));
+
+                    if (this.main.data.getConfig().contains(p.getDisplayName() + ".joins")) {
+                        Integer AmountOfJoins = this.main.data.getConfig().getInt(p.getDisplayName() + ".joins") + 1;
+                        this.main.data.getConfig().set(p.getDisplayName() + ".joins", AmountOfJoins);
+                        this.main.data.SavethisConfig();
+                    }else{
+                        if (!(main.data.getConfig().contains(p.getDisplayName() + ".joins"))) {
+                            this.main.data.getConfig().set(p.getDisplayName() + ".joins", 0);
+                            this.main.data.SavethisConfig();
+                        }
+                    }
+
                     p.closeInventory();
                 }
 
@@ -165,8 +183,7 @@ public class Listners implements Listener {
         Player p = e.getPlayer();
         Location loc = e.getFrom();
         if ((Main.instance.inventories.containsKey(p) && (
-
-                (e.getTo().getY() != loc.getY()) || (e.getTo().getX() != loc.getX()) || (e.getTo().getZ() != loc.getZ())))) {
+            (e.getTo().getY() != loc.getY()) || (e.getTo().getX() != loc.getX()) || (e.getTo().getZ() != loc.getZ())))) {
             loc.setPitch(e.getTo().getPitch());
             loc.setYaw(e.getTo().getYaw());
             p.teleport(loc);

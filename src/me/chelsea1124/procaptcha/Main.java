@@ -1,5 +1,6 @@
 package me.chelsea1124.procaptcha;
 
+import me.chelsea1124.procaptcha.Data.DataFile;
 import me.chelsea1124.procaptcha.Listeners.Listners;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -15,6 +16,7 @@ public class Main  extends JavaPlugin implements Listener {
 
     public static Main instance;
     public HashMap<Player, Inventory> inventories = new HashMap<Player, Inventory>();
+    public DataFile data = new DataFile(this);
 
     public static String color(String string) {
         return ChatColor.translateAlternateColorCodes('&', string);
@@ -28,6 +30,8 @@ public class Main  extends JavaPlugin implements Listener {
             saveDefaultConfig();
         }
 
+        data.saveDaultthis();
+
         Bukkit.getConsoleSender().sendMessage(color("&7============================================="));
         Bukkit.getConsoleSender().sendMessage(color("&eProCaptcha &7: &a1&7.&a1"));
         Bukkit.getConsoleSender().sendMessage("");
@@ -37,6 +41,5 @@ public class Main  extends JavaPlugin implements Listener {
         Bukkit.getConsoleSender().sendMessage(color("&7============================================="));
 
         this.getServer().getPluginManager().registerEvents(new Listners(this), instance);
-
     }
 }

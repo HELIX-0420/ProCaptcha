@@ -20,7 +20,6 @@ import java.util.List;
 public class CaptchaGUI implements Listener {
 
     private Main main;
-
     public CaptchaGUI ()
     {
         this.main = Main.instance;
