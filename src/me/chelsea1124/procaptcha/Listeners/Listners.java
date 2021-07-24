@@ -40,7 +40,6 @@ public class Listners implements Listener {
         Location loc = p.getLocation();
         int x = loc.getBlockX();
         int z = loc.getBlockZ();
-        double y = p.getWorld().getHighestBlockAt(p.getLocation()).getY() + 1;
         CaptchaGUI gui = new CaptchaGUI();
         gui.build(p);
 
@@ -57,8 +56,7 @@ public class Listners implements Listener {
         }
 
         if(!p.isOnGround()){
-            Location loc2 = p.getLocation().add(loc.getX(), y, loc.getZ());
-            p.teleport(loc2);
+            p.teleport(p.getWorld().getHighestBlockAt(x,z).getLocation());
         }
 
         if (p.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.AIR) {
