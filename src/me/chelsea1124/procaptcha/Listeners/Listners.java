@@ -43,7 +43,7 @@ public class Listners implements Listener {
         CaptchaGUI gui = new CaptchaGUI();
         gui.build(p);
 
-        if (p.hasPermission("procaptcha.bypass") || p.isOp() || main.data.getConfig().getInt(p.getDisplayName() + ".joins") == main.getConfig().getInt("JoinCounter.Amount")){
+        if (p.hasPermission("procaptcha.bypass") || p.isOp() || main.data.getConfig().getInt(p.getName() + ".joins") == main.getConfig().getInt("JoinCounter.Amount")){
 
             Bukkit.getScheduler().scheduleSyncDelayedTask(Main.instance, new Runnable() {
                 public void run() {
@@ -128,13 +128,13 @@ public class Listners implements Listener {
                     Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), Main.instance.color(main.getConfig().getString("GUIItems.RightCommand").replace("%player%", p.getPlayer().getDisplayName())));
                     p.sendMessage(Main.instance.color(main.getConfig().getString("Messages.CompleteCaptchaMessage").replace("%time%", format1.format(Time)).replace("%date%", format2.format(Date)).replace("%player%", p.getDisplayName())));
 
-                    if (this.main.data.getConfig().contains(p.getDisplayName() + ".joins")) {
-                        Integer AmountOfJoins = this.main.data.getConfig().getInt(p.getDisplayName() + ".joins") + 1;
-                        this.main.data.getConfig().set(p.getDisplayName() + ".joins", AmountOfJoins);
+                    if (this.main.data.getConfig().contains(p.getName() + ".joins")) {
+                        Integer AmountOfJoins = this.main.data.getConfig().getInt(p.getName() + ".joins") + 1;
+                        this.main.data.getConfig().set(p.getName() + ".joins", AmountOfJoins);
                         this.main.data.SavethisConfig();
                     }else{
-                        if (!(main.data.getConfig().contains(p.getDisplayName() + ".joins"))) {
-                            this.main.data.getConfig().set(p.getDisplayName() + ".joins", 0);
+                        if (!(main.data.getConfig().contains(p.getName() + ".joins"))) {
+                            this.main.data.getConfig().set(p.getName() + ".joins", 0);
                             this.main.data.SavethisConfig();
                         }
                     }
