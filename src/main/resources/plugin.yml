@@ -1,0 +1,4 @@
+name: procaptcha
+version: '${project.version}'
+main: me.helix.procaptcha.Main
+api-version: '1.21'
